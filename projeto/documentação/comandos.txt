@@ -1,0 +1,2 @@
+Inicialização front-end projeto 
+ -> yarn install
