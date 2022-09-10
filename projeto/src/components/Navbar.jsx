@@ -44,6 +44,7 @@ const Navbar = () => {
           />
         )}
 
+
         {toggleMenu && (
           <ul
             className="z-10 fixed top-0 -right-2 p-3 w-[70vw] h-screen shadow-2xl md:hidden list-none
