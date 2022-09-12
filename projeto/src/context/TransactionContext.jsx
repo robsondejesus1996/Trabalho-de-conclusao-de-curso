@@ -75,6 +75,7 @@ export const TransactionProvider = ({ children }) => {
       const transactionCount = await transactionContract.getEthereumContract();
 
       setTransactionCount(transactionCount.toNumber());
+      
 
     } catch (error) {
       console.log(error);
