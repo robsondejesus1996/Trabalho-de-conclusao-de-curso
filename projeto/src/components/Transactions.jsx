@@ -3,6 +3,13 @@ import React, { useContext } from 'react';
 import { TransactionContext } from '../context/TransactionContext';
 
 import dummyData from '../utils/dummyData';
+import { shortenAddress } from '../utils/shortenAddress';
+
+
+const TransactionCard = ({addressTo, addressFrom, timestamp, keyword, amount, url})=>{
+    return 'transaction'
+}
+
 
 const Transactions = () =>{
 
@@ -21,6 +28,12 @@ const Transactions = () =>{
                     </h3>
 
                 )}
+
+                <div className='flex flex-wrap justity-center items-center mt-10'>
+                    {dummyData.reverse().map((transaction, i) =>
+                    <TransactionCard key={i} {...transaction}/>)}
+
+                </div>
 
             </div>
 
