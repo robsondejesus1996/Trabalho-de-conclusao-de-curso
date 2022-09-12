@@ -10,17 +10,11 @@ const { ethereum } = window;
 const getEthereumContract = () => {
   const provider = new ethers.providers.Web3Provider(ethereum);
   const signer = provider.getSigner();
-  const transactionContract = new ethers.Contract(
-    contractAdress,
-    contractAbi,
-    signer
-  );
+  const transactionContract = new ethers.Contract(contractAdress,contractAbi,signer);
 
-  console.log({
-    provider,
-    signer,
-    transactionContract,
-  });
+  return transactionContract;
+
+  
 };
 
 export const TransactionProvider = ({ children }) => {
@@ -54,7 +48,19 @@ export const TransactionProvider = ({ children }) => {
       if (!ethereum) return alert("Please install Metamask");
 
       const {addressTo, amount, keyword, message}= formData;
-      getEthereumContract();
+      const transactionContract = getEthereumContract();
+      const parsedAmount = ethers.utils.parseEther
+
+      await ethereum.request({
+        method: 'eth_sendTransaction',
+        params: [{
+            from: currentAccount,
+            to: addressTo,
+            gas: '0x5208', // 21000 Gwei 0.000021 EHT taxa de gás
+            value: amount,
+        }]
+      })
+
     } catch (error) {
       console.log(error);
       throw new Error("No ethereum object");
