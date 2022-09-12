@@ -21,7 +21,7 @@ const Input = ({ placeholder, name, type, value, handleChange }) => (
 );
 
 const Welcome = () => {
-  const {connectWallet} = useContext(TransactionContext);
+  const {connectWallet, currentAccount} = useContext(TransactionContext);
   const handleSubmit = () => {};
   
   return (
@@ -35,7 +35,7 @@ const Welcome = () => {
             Explore o Mundo Crypto! Compre e Venda Criptomoedas Facilmente pelo
             Krypt!
           </p>
-          <button
+          {!currentAccount && (<button
             type="button"
             onClick={connectWallet}
             className="flex flex-row justify-center items-center my-5 bg-pink-900 p-3 rounded-full cursor-pointer hover:bg-pink-900"
@@ -44,7 +44,7 @@ const Welcome = () => {
               {" "}
               Conectar Carteira
             </p>
-          </button>
+          </button>)}
           <div className="grid sm:grid-cols-3 grid-cols-2 w-full mt-10">
             <div className={`rounded-tl-2xl ${commonStyles}`}>Seguro </div>
             <div className={commonStyles}>Agilidade</div>
