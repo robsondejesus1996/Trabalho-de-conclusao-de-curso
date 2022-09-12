@@ -1,6 +1,8 @@
+import React, {useContext, usetContext} from 'react';
 import { AiFillAlipayCircle } from "react-icons/ai";
 import { SiEthereum } from "react-icons/si";
 import { BsInfoCircle } from "react-icons/bs";
+import { TransactionContext } from "../context/TransactionContext";
 
 import { Loader } from "./";
 
@@ -19,6 +21,8 @@ const Input = ({ placeholder, name, type, value, handleChange }) => (
 );
 
 const Welcome = () => {
+  const {value} = useContext(TransactionContext);
+  console.log(value)
   const handleSubmit = () => {};
   const connectWallet = () => {};
   return (
@@ -60,10 +64,10 @@ const Welcome = () => {
             <div className="flex justify-between flex-col w-full h-full">
               <div className="flex justify-between items-start">
                 <div className="w-10 h-10 rounded-full border-2 border-white flex justify-center items-center">
-                  <SiEthereum font-size={21} color="#fff" />
+                  <SiEthereum fontSize={21} color="#fff" />
                 </div>
 
-                <BsInfoCircle font-size={17} color="#fff" />
+                <BsInfoCircle fontSize={17} color="#fff" />
               </div>
               <p className="text-white font-light text-sm">Endereço</p>
               <p className="text-white font-semibold text-lg mt-1">Ethereum</p>
